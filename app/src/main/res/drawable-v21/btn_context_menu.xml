@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/btn_context_menu_pressed">
+    <!--上面 android:color 涟漪显示的颜色 比这个浅一点-->
+
+    <!--下面 按钮正常显示的颜色 drawable-->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/btn_context_menu_normal" />
+        </shape>
+    </item>
+
+</ripple>
