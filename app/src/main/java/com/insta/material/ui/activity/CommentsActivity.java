@@ -26,6 +26,12 @@ import com.insta.material.Utils;
 import com.insta.material.ui.adapter.CommentAdapter;
 import com.insta.material.ui.view.SendCommentButton;
 
+/**
+ * 1.缩放当前位置开始 0.1f---1.0f 200ms 加速
+ * 2.内容 recyclerview 底部向上200 100ms 减速2.0f
+ * 3，评论底部向上 200 200 减速1.0f
+ */
+
 public class CommentsActivity extends BaseDrawerActivity
         implements SendCommentButton.OnSendCommentListener {
     public static final String ARG_POSITION = "ARG_POSITION";

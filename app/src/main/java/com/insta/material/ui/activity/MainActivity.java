@@ -105,7 +105,11 @@ public class MainActivity extends BaseDrawerActivity
 
     @Override
     public void onProfileClick(View v) {
-
+        int[] outLocation = new int[2];
+        v.getLocationOnScreen(outLocation);
+        outLocation[0] += v.getWidth() / 2;
+        UserProfileActivity.show(this, outLocation);
+        overridePendingTransition(0, 0);
     }
 
     @Override
