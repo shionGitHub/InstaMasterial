@@ -92,7 +92,10 @@ public class MainActivity extends BaseDrawerActivity
 
     @Override
     public void onCommentsClick(View v, int position) {
-
+        int[] location = new int[2];
+        v.getLocationOnScreen(location);
+        CommentsActivity.show(this, location[1]);
+        overridePendingTransition(0, 0);
     }
 
     @Override
