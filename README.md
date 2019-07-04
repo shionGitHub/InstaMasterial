@@ -2,4 +2,4 @@
   
 专门为了学习+练习
 
-![](https://github.com/shionGitHub/InstaMaterial/raw/master/gif/insta.png)
+![](https://github.com/shionGitHub/InstaMasterial/blob/master/gif/insta.gif)
