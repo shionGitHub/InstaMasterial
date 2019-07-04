@@ -194,22 +194,22 @@ public class MainActivity extends BaseDrawerActivity
         }
     }
 
-//    @Override
-//    protected void onNewIntent(Intent intent) {
-//        super.onNewIntent(intent);
-//        if (ACTION_SHOW_LOADING_ITEM.equals(intent.getAction())) {
-//            showFeedLoadingItemDelayed();
-//        }
-//    }
-//
-//    private void showFeedLoadingItemDelayed() {
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                rvFeed.smoothScrollToPosition(0);
-//                feedAdapter.showLoadingView();
-//            }
-//        }, 500);
-//    }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (ACTION_SHOW_LOADING_ITEM.equals(intent.getAction())) {
+            showFeedLoadingItemDelayed();
+        }
+    }
+
+    private void showFeedLoadingItemDelayed() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                rvFeed.smoothScrollToPosition(0);
+                feedAdapter.showLoadingView();
+            }
+        }, 500);
+    }
 
 }

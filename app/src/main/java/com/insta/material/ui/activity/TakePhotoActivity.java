@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
@@ -235,7 +236,8 @@ public class TakePhotoActivity extends BaseActivity
         if (v == btnAccept) {
             if (photoPath != null && photoPath.exists()) {
                 Log.e("1234", "-------------------path:\n" + photoPath.getAbsolutePath());
-
+                PublishActivity.openWithPhotoUri(this, Uri.fromFile(photoPath));
+                overridePendingTransition(0, 0);
             }
         }
         else if (v == btnTakePhoto) {

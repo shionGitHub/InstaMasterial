@@ -28,7 +28,6 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,17 +35,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.activity.CommentsActivity"
             android:theme="@style/AppTheme.TransparentActivity" />
-
         <activity
             android:name=".ui.activity.UserProfileActivity"
             android:theme="@style/AppTheme.TransparentActivity" />
-
         <activity
             android:name=".ui.activity.TakePhotoActivity"
+            android:theme="@style/AppTheme.TransparentActivity" />
+        <activity
+            android:name=".ui.activity.PublishActivity"
             android:theme="@style/AppTheme.TransparentActivity" />
 
     </application>
