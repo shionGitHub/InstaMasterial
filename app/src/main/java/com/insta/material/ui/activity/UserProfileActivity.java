@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,12 +12,10 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.insta.material.R;
-import com.insta.material.Utils;
 import com.insta.material.ui.adapter.UserProfileAdapter;
 import com.insta.material.ui.view.RevealBackgroundView;
 
@@ -40,6 +39,7 @@ public class UserProfileActivity extends BaseDrawerActivity
 
     public static final String ARG_ARRAY_POSITION = "ARG_ARRAY_POSITION";
     private int[] location;
+    private AppBarLayout appBarLayout;
     private RevealBackgroundView revealBackgroundView;
     private LinearLayout vUserProfileRoot;
     private CircleImageView ivUserProfilePhoto;
@@ -59,6 +59,7 @@ public class UserProfileActivity extends BaseDrawerActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         location = getIntent().getIntArrayExtra(ARG_ARRAY_POSITION);
+        appBarLayout = findViewById(R.id.appBarLayout);
         revealBackgroundView = findViewById(R.id.vRevealBackgroundView);
         vUserProfileRoot = findViewById(R.id.vUserProfileRoot);
         ivUserProfilePhoto = findViewById(R.id.ivUserProfilePhoto);
@@ -108,6 +109,7 @@ public class UserProfileActivity extends BaseDrawerActivity
     @Override
     public void onStateChange(int state) {
         if (state == RevealBackgroundView.STATE_FINISHED) {
+            appBarLayout.setVisibility(View.VISIBLE);
             vUserProfileRoot.setVisibility(View.VISIBLE);
             tlUserProfileTabs.setVisibility(View.VISIBLE);
             recycler.setVisibility(View.VISIBLE);
@@ -119,6 +121,7 @@ public class UserProfileActivity extends BaseDrawerActivity
             animateUserProfileHeader();
         }
         else {
+            appBarLayout.setVisibility(View.INVISIBLE);
             vUserProfileRoot.setVisibility(View.INVISIBLE);
             tlUserProfileTabs.setVisibility(View.INVISIBLE);
             recycler.setVisibility(View.INVISIBLE);

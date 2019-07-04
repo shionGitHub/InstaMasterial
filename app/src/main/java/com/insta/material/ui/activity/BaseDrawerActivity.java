@@ -84,7 +84,11 @@ public class BaseDrawerActivity extends BaseActivity {
             @Override
             public void run() {
                 //跳转到用户头像的页面
-                //TODO
+                int[] outLocation = new int[2];
+                v.getLocationOnScreen(outLocation);
+                outLocation[0] += v.getWidth() / 2;
+                UserProfileActivity.show(v.getContext(), outLocation);
+                overridePendingTransition(0, 0);
             }
         }, 200);
 

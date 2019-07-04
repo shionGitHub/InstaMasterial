@@ -50,40 +50,37 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
     @Override
     public void onBindViewHolder(@NonNull UserProfileHolder holder, int position) {
         bindToPhoto(holder, position);
-
+        if (lastAnimationItem < position) {
+            lastAnimationItem = position;
+        }
     }
 
     private int lastAnimationItem = -1;
 
     private void bindToPhoto(final UserProfileHolder holder, final int position) {
-        if (lastAnimationItem < position) {
-            lastAnimationItem = position;
-            Glide.with(mContext)
-                    .load(photos.get(position))
-                    .centerCrop()
-                    .listener(new RequestListener<Drawable>() {
-                        @Override
-                        public boolean onLoadFailed(@Nullable GlideException e,
-                                                    Object model,
-                                                    Target<Drawable> target,
-                                                    boolean isFirstResource) {
-                            return false;
-                        }
+        Glide.with(mContext)
+                .load(photos.get(position))
+                .centerCrop()
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e,
+                                                Object model,
+                                                Target<Drawable> target,
+                                                boolean isFirstResource) {
+                        return false;
+                    }
 
-                        @Override
-                        public boolean onResourceReady(Drawable resource,
-                                                       Object model,
-                                                       Target<Drawable> target,
-                                                       DataSource dataSource,
-                                                       boolean isFirstResource) {
-                            animationToItem(holder.imageView, position);
-                            return false;
-                        }
-                    })
-                    .into(holder.imageView);
-        }
-
-
+                    @Override
+                    public boolean onResourceReady(Drawable resource,
+                                                   Object model,
+                                                   Target<Drawable> target,
+                                                   DataSource dataSource,
+                                                   boolean isFirstResource) {
+                        animationToItem(holder.imageView, position);
+                        return false;
+                    }
+                })
+                .into(holder.imageView);
     }
 
     public boolean lockAnimation = false;
@@ -92,6 +89,7 @@ public class UserProfileAdapter extends RecyclerView.Adapter<UserProfileAdapter.
         if (lockAnimation) {
             return;
         }
+
         view.setScaleX(0.0f);
         view.setScaleY(0.0f);
         view.setPivotX(view.getWidth() / 2);

@@ -4,7 +4,19 @@
     package="com.insta.material">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +26,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="m">
 
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
@@ -30,6 +43,10 @@
 
         <activity
             android:name=".ui.activity.UserProfileActivity"
+            android:theme="@style/AppTheme.TransparentActivity" />
+
+        <activity
+            android:name=".ui.activity.TakePhotoActivity"
             android:theme="@style/AppTheme.TransparentActivity" />
 
     </application>

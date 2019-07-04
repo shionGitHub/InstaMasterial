@@ -67,6 +67,10 @@ public class RevealBackgroundView extends View {
 
     }
 
+    public void setFillPaintColor(int color) {
+        fillPaint.setColor(color);
+    }
+
     public void setFrameToFinished() {
         this.state = STATE_FINISHED;
         postInvalidate();
@@ -116,6 +120,7 @@ public class RevealBackgroundView extends View {
     public void setOnStateChangeListener(OnStateChangeListener listener) {
         this.onStateChangeListener = listener;
     }
+
 
     public interface OnStateChangeListener {
         void onStateChange(int state);

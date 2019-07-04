@@ -25,7 +25,8 @@ import com.insta.material.ui.view.FeedContextMenuManager;
 
 public class MainActivity extends BaseDrawerActivity
         implements FeedAdapter.OnFeedItemClickListener,
-        FeedContextMenu.OnFeedContextMenuItemClickListener {
+        FeedContextMenu.OnFeedContextMenuItemClickListener,
+        View.OnClickListener {
 
     public static final String ACTION_SHOW_LOADING_ITEM = "action_show_loading_item";
 
@@ -62,6 +63,7 @@ public class MainActivity extends BaseDrawerActivity
         rvFeed = findViewById(R.id.rvFeed);
         fabCreate = findViewById(R.id.btnCreate);
         clContent = findViewById(R.id.content);
+        fabCreate.setOnClickListener(this);
     }
 
     private void setupFeed() {
@@ -178,6 +180,18 @@ public class MainActivity extends BaseDrawerActivity
     @Override
     public void onCancelClick() {
         FeedContextMenuManager.getInstance().hideAnimation();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == fabCreate) {
+
+            int[] outLocation = new int[2];
+            v.getLocationOnScreen(outLocation);
+            outLocation[0] += v.getWidth() / 2;
+            TakePhotoActivity.show(this, outLocation);
+            overridePendingTransition(0, 0);
+        }
     }
 
 //    @Override
